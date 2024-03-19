@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+        nav{padding: 15px;}
+        nav a{text-decoration: none; cursor: pointer}
+        .error{color: red}
+        input{width: 50px;}
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Home</a> |
+        <a th:href="@{/teacher/manage-courses}">Courses Management</a> |
+        <form action="#" th:action="@{/logout}" method="POST">
+            <button>Logout</button>
+        </form>
+    </nav>
+</header>
+<div class="container">
+    <h2>Add a Course</h2>
+    <p>Here you can add a course</p>
+    <form th:action="@{/teacher/processAddCourseForm}" th:object="${course}" method="POST">
+        <span th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}" class="error"/>
+        <label>Course name: </label> <input type="text" th:field="*{courseName}">
+        <span th:if="${#fields.hasErrors('materials')}" th:errors="*{materials}" class="error"/>
+        <label>Materials: </label> <input type="text" th:field="*{materials}">
+        <button>Add Course</button>
+    </form>
+</div>
+</body>
+</html>

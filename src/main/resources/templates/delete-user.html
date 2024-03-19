@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+        nav{padding: 15px;}
+        nav a{text-decoration: none; cursor: pointer}
+        .error{color: red}
+        input{width: 50px;}
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Home</a> |
+        <a th:href="@{/admin/manage-accounts}">Users Account Management</a> |
+        <form action="#" th:action="@{/logout}" method="POST">
+            <button>Logout</button>
+        </form>
+    </nav>
+</header>
+<div class="container">
+    <h2>Delete an user</h2>
+    <p>Here you can delete an user</p>
+    <form >
+        <span class="error"/>
+        <label>User id:</label> <input type="text">
+        <label>Username: </label> <input type="text">
+        <button>Delete User</button>
+    </form>
+</div>
+</body>
+</html>

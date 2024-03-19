@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Manager</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+        nav{padding: 15px;}
+        nav a{text-decoration: none; cursor: pointer}
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Home</a> |
+        <a th:href="@{/admin}">Admin Menu</a> |
+        <form action="#" th:action="@{/logout}" method="POST">
+            <button>Logout</button>
+        </form>
+    </nav>
+</header>
+<div class="container">
+    <h2>Users Account Management</h2>
+    <p>Here you can manage user's accounts</p>
+    <div>
+        <a th:href="@{/admin/add-user}" role="button">Add an user</a>
+        <a th:href="@{/admin/update-user}" role="button">Update an user</a>
+        <a th:href="@{/admin/delete-user}" role="button">Delete an user</a>
+        <a th:href="@{/admin/view-users}" role="button">View all users</a>
+    </div>
+</div>
+</body>
+</html>

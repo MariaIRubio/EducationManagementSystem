@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Management</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+        nav{padding: 15px;}
+        nav a{text-decoration: none; cursor: pointer}
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Home</a> |
+        <a th:href="@{/teacher/manage-grades}">Grades Management</a> |
+        <form action="#" th:action="@{/logout}" method="POST">
+            <button>Logout</button>
+        </form>
+    </nav>
+</header>
+<div class="container">
+    <h2>Give a grade</h2>
+    <p>Here you can give a grade</p>
+    <form>
+        <label>Student id:</label><input type="text">
+        <label>Course:</label><input type="text">
+        <label>Grade:</label><input type="text">
+        <button>Confirm</button>
+    </form>
+
+</div>
+</body>
+</html>

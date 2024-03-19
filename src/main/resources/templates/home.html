@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+        nav{padding: 15px;}
+        a {text-decoration: none; cursor: pointer}
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+            <a th:href="@{/student}">Student</a> |
+            <a th:href="@{/teacher}">Teacher</a> |
+            <a th:href="@{/admin}">Admin</a> |
+        <form action="#" th:action="@{/logout}" method="POST">
+            <button>Logout</button>
+        </form>
+    </nav>
+</header>
+<div class="container">
+    <h2>Education Management System</h2>
+    <p>Welcome to the system <span sec:authentication="principal.username"/></p>
+    <p>You are logged in as <span sec:authentication="principal.authorities"/></p>
+
+    <div  sec:authorize="hasRole('STUDENT')">
+        <a th:href="@{/student}" role="button">Student Access</a>
+    </div>
+    <div  sec:authorize="hasRole('TEACHER')">
+        <a th:href="@{/teacher}" role="button">Teacher Access</a>
+    </div>
+    <div  sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/admin}" role="button">Admin Access</a>
+    </div>
+</div>
+</body>
+</html>

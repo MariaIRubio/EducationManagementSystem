@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+        nav{padding: 15px;}
+        nav a{text-decoration: none; cursor: pointer}
+        .edit-button {
+            font-size: 14px;
+            padding: 6px 12px;
+            height: auto;
+            margin: 0 6px;
+            width: auto !important;
+        }
+        li {
+            display: flex;
+            align-items: center;
+            border-top: 1px dotted #999;
+            padding: 12px 0;
+            margin: 0;
+            position: relative;
+        }
+        li:last-child{border-bottom: 1px dotted #999;}
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Home</a> |
+        <a th:href="@{/teacher/manage-courses}">Courses Management</a> |
+        <form action="#" th:action="@{/logout}" method="POST">
+            <button>Logout</button>
+        </form>
+    </nav>
+</header>
+<div class="container">
+    <h2>View courses</h2>
+    <p>Here you can see all your courses</p>
+    <ul>
+    <li th:each="course : ${courseList}">
+        <span th:text="${course.courseID}"/> |
+        <span th:text="${course.courseName}"/> |
+        <span th:text="${course.materials}"/> |
+    </li>
+    </ul>
+</div>
+</body>
+</html>
